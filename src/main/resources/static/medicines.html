@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines - MediShop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">Medi<span>Shop</span></a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="medicines.html">Medicines</a>
+        <a href="cart.html">🛒 Cart <span class="cart-badge" id="cartCount">0</span></a>
+        <a href="orders.html">Orders</a>
+        <a href="login.html" id="authLink">Login</a>
+    </div>
+</nav>
+
+<h2 class="page-title">All Medicines 💊</h2>
+
+<div class="search-section">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search medicines...">
+        <button onclick="searchMedicines()">Search</button>
+<button onclick="clearSearch()" 
+    style="padding:12px 25px;background:#6b7280;color:white;
+    border:none;border-radius:25px;cursor:pointer;font-size:16px;">
+    Clear
+</button>
+    </div>
+</div>
+
+<div class="categories" id="categories"></div>
+
+<div class="medicines-grid" id="medicinesGrid"></div>
+
+<script src="js/api.js"></script>
+<script src="js/medicines.js"></script>
+<script>
+    if (Auth.isLoggedIn()) {
+        document.getElementById('authLink').textContent = 'Logout';
+        document.getElementById('authLink').onclick = Auth.logout;
+    }
+    loadMedicines();
+    loadCategories();
+</script>
+</body>
+</html>

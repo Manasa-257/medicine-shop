@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediShop - Online Medicine Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html" class="logo">Medi<span>Shop</span></a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="medicines.html">Medicines</a>
+        <a href="cart.html">🛒 Cart <span class="cart-badge" id="cartCount">0</span></a>
+        <a href="orders.html">Orders</a>
+        <a href="login.html" id="authLink">Login</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Your Health, Delivered Fast 💊</h1>
+    <p>Order medicines online and get them delivered to your doorstep</p>
+    <a href="medicines.html" class="btn">Shop Now</a>
+</div>
+
+<!-- Search Section -->
+<div class="search-section">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search medicines...">
+        <button onclick="searchMedicines()">Search</button>
+    </div>
+</div>
+
+<!-- Categories -->
+<div class="categories" id="categories"></div>
+
+<!-- Medicines Grid -->
+<h2 class="page-title">Featured Medicines</h2>
+<div class="medicines-grid" id="medicinesGrid"></div>
+
+<script src="js/api.js"></script>
+<script src="js/medicines.js"></script>
+<script>
+    // Update auth link
+    if (Auth.isLoggedIn()) {
+        document.getElementById('authLink').textContent = 'Logout';
+        document.getElementById('authLink').onclick = Auth.logout;
+    }
+
+    // Load medicines and categories on home page
+    loadMedicines();
+    loadCategories();
+</script>
+</body>
+</html>
